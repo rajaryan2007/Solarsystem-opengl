@@ -14,6 +14,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(Solarsysytem
 
     src/app.cpp
+    src/window.cc
+    src/shader.cc
+    src/renderer.cpp
+    src/camera.cc
+    src/texture.cc
     # GLAD
     vendor/glad/src/glad.c
 
@@ -24,7 +29,7 @@ add_executable(Solarsysytem
     vendor/imgui/imgui_widgets.cpp
     vendor/imgui/backends/imgui_impl_glfw.cpp
     vendor/imgui/backends/imgui_impl_opengl3.cpp
-)
+ )
 
 # Include directories
 target_include_directories(Solarsysytem PRIVATE
