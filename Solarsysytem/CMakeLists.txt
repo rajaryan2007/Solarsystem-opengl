@@ -12,13 +12,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Add executable
 add_executable(Solarsysytem
-
+    
     src/app.cpp
     src/window.cc
     src/shader.cc
     src/renderer.cpp
     src/camera.cc
     src/texture.cc
+   
+    src/layerStack.cc
     # GLAD
     vendor/glad/src/glad.c
 
@@ -33,11 +35,13 @@ add_executable(Solarsysytem
 
 # Include directories
 target_include_directories(Solarsysytem PRIVATE
-   
+    src/include
     vendor/imgui
     vendor/imgui/backends
     vendor/include
     vender/glad/include
+
+    
     
 )
 

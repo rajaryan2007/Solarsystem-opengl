@@ -51,7 +51,7 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
 	glCompileShader(vertex);
 	checkCompileErrors(vertex, "VERTEX");
 
-	unsigned int fragment;
+
 	fragment = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragment, 1, &fShaderCode, NULL);
 	glCompileShader(fragment);

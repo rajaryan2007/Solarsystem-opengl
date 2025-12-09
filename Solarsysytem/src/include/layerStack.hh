@@ -1,0 +1,25 @@
+#pragma once
+#include<vector>
+#include "layer.hh"
+
+
+class LayerStack {
+public:
+	LayerStack() = default;
+	~LayerStack() {
+		for (Layer* layer : m_Layers)
+			layer->OnDetach();
+	}
+
+	void PushLayer(Layer* layer);
+	void PushOverlay(Layer* overlay);
+	void PopLayer(Layer* layer);
+	void PopOverlay(Layer* overlay);
+
+	std::vector<Layer*>& GetLayers() { return m_Layers; }
+
+private:
+	std::vector<Layer*> m_Layers;
+	unsigned int m_LayerInsertIndex = 0;
+};
+
