@@ -1,5 +1,4 @@
 
-#include "../glad/include/glad/glad.h"
 
 #include <string>
 #include <fstream>
@@ -15,7 +14,7 @@
 Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geometryPath) {
 	std::string vertexCode, fragmentCode, geometryCode;
 	std::ifstream vShaderFile, fShaderFile, gShaderFile;
-
+	
 	vShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
 	fShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
 	try {
@@ -29,6 +28,8 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
 		vertexCode = vShaderStream.str();
 		fragmentCode = fShaderStream.str();
 
+	     std::cout << "Vertex shader size: " << vertexCode.size() << std::endl;
+	     std::cout << "Fragment shader size: " << fragmentCode.size() << std::endl;
 		if (geometryPath != nullptr)
 		{
 			gShaderFile.open(geometryPath);
@@ -38,10 +39,10 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
 			geometryCode = gShaderStream.str();
 		}
 	}
-	catch(std::ifstream::failure& e){
-		std::cout << "ERROR::SHADER::VERTEX::FILE_NOT_SUCCESFULLY_READ" << std::endl;
+	catch (std::ifstream::failure& e) {
+		std::cout << "ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ: " << e.what() << std::endl;
+		return ;
 	}
-
 	const char* vShaderCode = vertexCode.c_str();
 	const char* fShaderCode = fragmentCode.c_str();
 
@@ -73,7 +74,7 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
 	if (geometryPath != nullptr)
 		glAttachShader(ID, geometry);
 	glLinkProgram(ID);
-	glLinkProgram(ID);
+	
 	checkCompileErrors(ID, "PROGRAM");
 
 	glDeleteShader(vertex);

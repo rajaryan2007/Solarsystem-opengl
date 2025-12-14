@@ -1,5 +1,6 @@
 #pragma once
-
+#include <string>
+#include "../glad/include/glad/glad.h"
 class Shader {
 public:
 	Shader(const char* vertexPath,const char* fragmentPath,const char* geometryPath = nullptr);
