@@ -9,7 +9,9 @@ project(Solarsysytem VERSION 1.0 LANGUAGES CXX)
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
+set(OpenGL_GL_PREFERENCE GLVND)
+# Optional: Suppress the warning if you want (but better to set preference)
+cmake_policy(SET CMP0072 NEW)
 
 # Add executable
 add_executable(Solarsysytem
